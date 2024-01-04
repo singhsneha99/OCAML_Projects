@@ -1,0 +1,34 @@
+# Cish to MIPS Compiler 
+
+This project involves writing a compiler to translate Cish code to MIPS assembly. Cish extends the Fish language from previous assignments with functions, local variables, and function calls.
+
+## Cish Language
+
+Key elements of Cish syntax:
+
+- Functions defined as `var(var1, .. varn) { stmt_list }`
+- `main` is distinguished entry point function
+- New statement for variable declaration - `let var = exp; stmt` 
+- Function calls as expressions - `var(exp1,...expn)`
+- Includes `printInt` library function to print integers
+
+## Tools
+
+- Abstract syntax, lexer, parser and interpreter provided
+- Requires completion of `compile.ml` compiler
+
+SPIM simulator optional for testing emitted MIPS code
+
+## Implementation 
+
+- Keep environment mapping vars to offsets relative to frame pointer
+- Save caller-saved registers appropriately across function calls
+- Use stack for storing temporary values
+
+Focus on getting basics working cleanly over optimizations.
+
+## Testing
+
+`make` generates executable `folder` that compiles Cish files.
+
+Save output and run in SPIM to validate return value. Add `printInt` calls for debugging.

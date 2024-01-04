@@ -1,0 +1,44 @@
+# Fish Language Parser
+
+This project involves building a parser and lexer for Fish - a simple Fortran-like language. Fish contains basic arithmetic expressions, assignment statements, conditionals, loops, and comments. 
+
+## Implementation
+
+There are two options for the implementation:
+
+### 1. Lex & Yacc
+
+- `lex.mll` : Defines lexer rules and tokens
+- `parse.mly` : Contains grammar for parsing into AST  
+
+### 2. Parser Combinators
+
+- `comblexer.ml` : Lexer built using combinators
+- `combparser.ml` : Recursive descent parser using combinators
+
+`ast.ml` provides the abstract syntax tree representation. `eval.ml` contains an interpreter to execute the parsed Fish programs.
+
+## Testing
+
+The `Makefile` provides two test executables:
+
+- `ps2yacc` : Uses Lex & Yacc files 
+- `ps2comb` : Uses Parser Combinator files
+
+Both take a Fish source file as input, run the parser to generate AST, interpret using `eval.ml` and print output.
+
+Fish test files are provided in `tests/` directory.
+
+
+## Fish Language Syntax
+
+Key elements of Fish language syntax:
+
+- C-style comments delimited by `/* */` 
+- Expressions use parentheses, statements use braces
+- Follows operator precedence and associativity of C
+- Identifiers - start with character, contain chars/digits/underscore
+- Only integer numeric literals
+- Empty statement represented by `skip`
+
+Refer to additional test cases for more example syntax.

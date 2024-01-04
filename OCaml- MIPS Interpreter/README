@@ -1,0 +1,34 @@
+# Mips Interpreter 
+
+This project involves creating a Mips interpreter for a subset of Mips machine code instructions. 
+
+## Problem Statement
+
+The goal is to implement an `interp` function that takes an initial Mips processor state containing register file, memory, and program counter - and executes the machine code loaded in memory to produce a final state after completion.
+
+The interpreter needs to handle the following non-pseudo instructions:
+
+- Arithmetic (add, sub)
+- Logical (and, or) 
+- Load/Store (lw, sw)
+- Branching (beq)
+
+## Implementation 
+
+The key steps are:
+
+1. Load 4 byte chunks from memory based on program counter 
+2. Decode instruction word into Mips AST representation
+3. Implement separate handler functions for each instruction type 
+   - Arithmetic : `step_add`, `step_sub`
+   - Logical: `step_and`, `step_or`
+   - Load/Store: `step_lw`, `step_sw`
+   - Branching: `step_beq`
+4. Update program state after each step
+5. Stop when instruction word contains all 0s
+
+Helper functions are provided for:
+
+- Assembling Mips code
+- Parsing register and memory contents in final state
+- Testing

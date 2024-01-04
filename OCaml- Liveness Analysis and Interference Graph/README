@@ -1,0 +1,39 @@
+# Liveness Analysis and Interference Graph
+
+This project involves:
+
+1. Implementing a liveness dataflow analysis on a CFG
+2. Using the analysis to build an interference graph
+
+For a given Cish function.
+
+## Background
+
+`cfg_ast.ml` defines the CFG intermediate representation used.
+
+- Basic blocks with labels, control flow
+- `fn2blocks` converts Cish syntax to CFG blocks
+
+## Implementation
+
+In `cfg.ml`:
+
+- Implement `build_interfere_graph` 
+- Performs liveness analysis on each CFG instruction
+- Construct interference graph from liveness results
+
+Can use either textbook or lecture notes definition of interference.
+
+## Usage 
+
+`make` generates executable `folder_cfg`
+
+Pass Cish file to emit CFG and interference graph
+
+## Testing
+
+Verify interference claims match expected output.
+
+Focus is on temporary variables rather than registers.
+
+Sample interference graph output provided for reference.

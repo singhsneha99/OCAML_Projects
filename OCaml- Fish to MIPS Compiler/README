@@ -1,0 +1,54 @@
+# Fish to MIPS Compiler
+
+This project compiles programs written in Fish language to equivalent MIPS assembly code.
+
+## Overview
+
+The compiler `compile.ml` takes Fish abstract syntax tree as input and produces corresponding MIPS instructions so that:
+
+- Return value of Fish program is placed in `$2` register
+- Execution jumps back to address originally in `$31` on completion  
+
+No optimizations are required. The focus is on correctly compiling elementary statements and expressions.
+
+## Tools Setup
+
+Requires OCaml packages:
+- `ppx_deriving`
+- `ppx_sexp_conv` 
+- `sexp`
+
+Install with `opam install PACKAGE`
+
+SPIM simulator is optional for testing MIPS output.
+
+## Usage
+
+Two execution modes:
+
+1. `./<folder> src FILE.fish`
+
+   - Parses `.fish` file directly
+   - Requires `lex.mll` and `parse.mly` from PS2
+   
+2. `./<folder> sexp FILE.sexp` 
+
+   - Uses pre-parsed AST s-expression file
+   - Recommended approach
+
+MIPS assembly output can be saved, assembled in SPIM. 
+
+## Implementation
+
+Complete the `IMPLEMENT_ME` sections in `compile.ml`:
+
+1. Function to collect all variables used
+2. `compile` function to translate AST to MIPS
+
+No optimizations needed. Focus on correctly implementing basics.
+
+## Testing
+
+Test cases provided in `tests/` directory. Both `.fish` and `.sexp` versions available.
+
+Verify expected return value printed when running SPIM on compiled output.

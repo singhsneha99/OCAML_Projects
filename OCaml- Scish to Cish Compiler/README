@@ -1,0 +1,45 @@
+# Scish to Cish Compiler
+
+This project involves writing a compiler to translate programs written in Scish, a subset of Scheme, to equivalent Cish code.
+
+## Scish Language
+
+Scish extends Cish with:
+
+- Pointers 
+- Dynamic memory allocation
+- First-class functions
+- Lexer and parser provided
+
+Key concepts:
+
+- `*exp` - read word at address denoted by exp
+- `*exp1 = exp2` - write value of exp2 to address exp1
+- `exp(exp1..expn)` - first-class function values
+- `malloc(n)` - allocate n bytes, return pointer 
+
+## Implementation 
+
+Complete `compile_exp` in `scish_compile.ml` to produce Cish AST from Scish expression.
+
+Strategies:
+
+- Compile lambdas to new Cish functions accepting environment parameter
+- Application - evaluate to closure, extract function ptr and extend environment
+- Variables - generate code to lookup values in environment
+
+## Tools
+
+- `scish_ast.ml` - Abstract syntax  
+- `scish_eval.ml` - Scish interpreter
+- `cish_eval.ml` - Cish interpreter
+- Test framework provided
+
+## Testing
+
+`make` generates two executables:
+
+- `folder_scish` : Compiles Scish to Cish
+- `folder_cish` : Interprets Cish code
+
+Pipe output of first to second to validate results.
