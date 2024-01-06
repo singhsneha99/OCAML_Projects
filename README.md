@@ -1,4 +1,4 @@
-# Learning Functional Programming with OCaml
+# OCaml: Functional Programming concepts
 
 This repository contains OCaml projects completed to gain proficiency with functional programming concepts. Key areas covered:
 
